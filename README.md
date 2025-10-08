@@ -204,21 +204,6 @@ curl -X POST http://localhost:4567/login \
 
 ---
 
-## 🧩 Métadonnées projet
-
-**Nom du projet :** `ScarletTrace`
-**Description courte :**
-
-> Un logger d’API léger en Ruby/Sinatra pour tracer les connexions utilisateurs et envoyer des notifications en temps réel vers Discord et Telegram.
-
-**Tags GitHub :**
-
-```
-ruby sinatra logger api security telemetry webhook telegram discord jsonl audit monitoring lightweight
-```
-
----
-
 **Auteur :** *Miro-fr* ✨
 Déployez, connectez, et laissez **ScarletTrace** surveiller vos logs en silence.
 
